@@ -5,7 +5,7 @@
 Requirements:
 
 ```
-Python 3.9
+Python 3.7+
 ```
 Other requirements are specified in the [requirements.txt](requirements.txt) file and can be installed with:
 ```
