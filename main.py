@@ -5,18 +5,31 @@ from PyPDF2 import PdfFileWriter, PdfFileReader
 
 
 def pdfProcess(FILE_PATH, dest=None):
+
+    # Check if file provided PDF file exists
     if not os.path.exists(FILE_PATH):
-        print(f"File {FILE_PATH} does not exist")
+        print(f"File {FILE_PATH} does not exist.")
         return
-    inputpdf = PdfFileReader(open(FILE_PATH, "rb"))
-    if dest and not os.path.exists(dest):
+
+    # Check/create the generated file save location
+    if not dest:
+        dest = os.path.join(os.path.dirname(os.path.abspath(__file__)), f"split_pdf")
+    if not os.path.exists(dest):
         os.makedirs(dest)
-    for i in range(inputpdf.numPages):
-        output = PdfFileWriter()
-        output.addPage(inputpdf.getPage(i))
-        with open(os.path.join(dest, f"page{i}.pdf"), "wb") as outputStream:
-            output.write(outputStream)
-    print(f"Files have been saved to {os.path.dirname(FILE_PATH) if not dest else dest}")
+
+    # Split the provided PDF into pages
+    try:
+        inputpdf = PdfFileReader(open(FILE_PATH, "rb"))
+        numPages = inputpdf.numPages
+        for i in range(numPages):
+            output = PdfFileWriter()
+            output.addPage(inputpdf.getPage(i))
+            with open(os.path.join(dest, f"page{i}.pdf"), "wb") as outputStream:
+                output.write(outputStream)
+        print(f"{numPages} files have been saved to {dest}.")
+    except Exception as e:
+        print(repr(e))
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="PDFsplitter generates separate PDF files for each page",
