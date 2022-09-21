@@ -1,20 +1,27 @@
-# PDFsplitter
+# Splitter
 
-## Program that splits a PDF into separate PDF files for each page.
+## Package that allows you to split documents into separate files for each page.
 
-Requirements:
+#### Requirements:
 
 ```
-Python 3.7+
+Python 3.8+
 ```
-Other requirements are specified in the [requirements.txt](requirements.txt) file and can be installed with:
+#### Instalation:
 ```
 pip install -r requirements.txt
 ```
 
 ## Run instructions:
-To run the program you have to run the [main.py](main.py) python script.
-```
-main.py <PDF_FILE_PATH> <SAVE_DESTINATION>
+
+```python
+from src.splitter.pdf import split as pdf_split
+from src.splitter.excel import split as excel_split
+
+# save destination is OPTIONAL (defaults to current location)
+
+pdf_split('<PATH_TO_FILE>', dest='<SAVE_PATH>')
+excel_split('<PATH_TO_FILE>', dest='<SAVE_PATH>')
+
 ```
 NOTE: if the specified saving destination does not exist, the program will create the necessary directories.
