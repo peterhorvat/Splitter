@@ -1,4 +1,4 @@
-# Splitter
+# Splitting
 
 ## Package that allows you to split documents into separate files for each page.
 
@@ -15,8 +15,8 @@ pip install -r requirements.txt
 ## Run instructions:
 
 ```python
-from src.splitter.pdf import split as pdf_split
-from src.splitter.excel import split as excel_split
+from src.splitting.pdf import split as pdf_split
+from src.splitting.excel import split as excel_split
 
 # save destination is OPTIONAL (defaults to current location)
 

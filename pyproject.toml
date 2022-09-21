@@ -1,3 +1,7 @@
 [build-system]
-requires = ['setuptools>=42']
+requires = [
+    'setuptools>=42',
+    'PyPDF2==2.10.8',
+    'xlwings'
+]
 build-backend = 'setuptools.build_meta'

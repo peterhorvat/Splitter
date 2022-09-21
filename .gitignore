@@ -2,3 +2,4 @@
 .idea/
 /dist/
 /splitter.egg-info/
+/src/splitting.egg-info/
